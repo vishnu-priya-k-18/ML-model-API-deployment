@@ -11,7 +11,7 @@ process it by finding relevant data and send that data to the client.
 Machine Learning
 * ML is a sort of data analysis where machine learn from data, identify patterns and predict or make decisions accordingly.
 
-###Example
+### Example
 E-commerse - websites like flipkart and amazon use ML algorithm or ML model to provide relevant data to client.
 
 ## what is HTTP?
@@ -38,7 +38,7 @@ In server perspective,
 * instead, it provides data in the form of JSON.
 * it is stateless - it knows only the current request not the previous request.
 
-##Flask in python
+## Flask in python
 * It is an API which understand the request and decides what to do with the request.
 
 ## Steps to create Flask application
