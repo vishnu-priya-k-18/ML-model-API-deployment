@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 import pickle
 
 app = Flask(__name__,template_folder='templates')
