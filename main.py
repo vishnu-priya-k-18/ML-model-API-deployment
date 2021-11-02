@@ -1,21 +1,39 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 import pickle
+import numpy as np
 
+import requests
 app = Flask(__name__,template_folder='templates')
-
+model = pickle.load(open('model.pkl', 'rb'))  # load
+print(python.version)
 @app.route('/',methods = ['GET','POST'])
 def getResult():
-    result = 0
-    if request.method == 'POST':
-        model = pickle.load(open('model.pkl', 'rb'))#load
-        user_input = request.form.get("experience")# input
+    if request.method == "GET":
+        url = "http://127.0.0.1:5000/"
 
-        result = model.predict([[user_input]])#predict
-        print(result)
+        data = {
 
-    return  render_template("index.html", prediction = result)
+            "experience": 1
+        }
+
+        r = requests.post(url, json=data)
+        return str(r.json())
+
+    if request.method == "POST":
+
+
+        data = request.get_json()
+        experienceOfEmployee = data["experience"]
+        user_input = np.array([[experienceOfEmployee]])
+        prediction = model.predict(user_input)
+
+        return str(prediction)
 
 if __name__ == "__main__":
-    app.run(debug=True, port= 8080)
+    app.debug = True
+    app.run()
+
+
+
