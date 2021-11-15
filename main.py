@@ -7,11 +7,11 @@ import numpy as np
 import requests
 app = Flask(__name__,template_folder='templates')
 model = pickle.load(open('model.pkl', 'rb'))  # load
-print(python.version)
+
 @app.route('/',methods = ['GET','POST'])
 def getResult():
     if request.method == "GET":
-        url = "http://127.0.0.1:5000/"
+        url = "http://127.0.0.1:4999/"
 
         data = {
 
@@ -33,7 +33,7 @@ def getResult():
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(port = 4999)
 
 
 
